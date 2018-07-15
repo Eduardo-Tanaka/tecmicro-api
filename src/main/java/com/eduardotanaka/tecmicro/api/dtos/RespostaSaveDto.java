@@ -1,22 +1,23 @@
 package com.eduardotanaka.tecmicro.api.dtos;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-public class PostSaveDto {
+public class RespostaSaveDto {
 
 	private Long id;
-	
-	@NotEmpty(message = "O campo título não pode ser vazio")
-	@Length(max = 255, message = "O título deve ter no máximo 255 caracteres")
-	private String title;
 	
 	@NotEmpty(message = "O campo descrição não pode ser vazio")
 	@Length(max = 1000, message = "A descrição deve ter no máximo 1000 caracteres")
 	private String content;
 	
+	@NotNull(message = "O campo id do usuário não pode ser nulo")
 	private Long idUsuario;
+	
+	@NotNull(message = "O campo id do post não pode ser nulo")
+	private Long idPost;
 
 	public Long getId() {
 		return id;
@@ -24,14 +25,6 @@ public class PostSaveDto {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getContent() {
@@ -50,9 +43,18 @@ public class PostSaveDto {
 		this.idUsuario = idUsuario;
 	}
 
-	@Override
-	public String toString() {
-		return "PostSaveDto [id=" + id + ", title=" + title + ", content=" + content + ", idUsuario=" + idUsuario + "]";
+	public Long getIdPost() {
+		return idPost;
 	}
 
+	public void setIdPost(Long idPost) {
+		this.idPost = idPost;
+	}
+
+	@Override
+	public String toString() {
+		return "RespostaSaveDto [id=" + id + ", content=" + content + ", idUsuario=" + idUsuario + ", idPost=" + idPost
+				+ "]";
+	}
+	
 }

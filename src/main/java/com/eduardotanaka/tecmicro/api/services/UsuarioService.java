@@ -15,7 +15,7 @@ public interface UsuarioService {
 	
 	/**
 	 * Busca e retorna um usuário pelo id
-	 * @param long: id
+	 * @param Long: id
 	 * @return Usuario
 	 */
 	Optional<Usuario> buscarPorId(Long id);

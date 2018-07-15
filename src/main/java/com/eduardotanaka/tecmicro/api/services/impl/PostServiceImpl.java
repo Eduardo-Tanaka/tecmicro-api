@@ -26,7 +26,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Optional<Post> buscarPorId(long id) {
+	public Optional<Post> buscarPorId(Long id) {
 		log.info("Buscando pelo id: {}", id);
 		return Optional.ofNullable(this.postRepository.findById(id).get());
 	}

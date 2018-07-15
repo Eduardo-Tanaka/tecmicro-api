@@ -18,5 +18,5 @@ public interface PostService {
 	 * @param long: id
 	 * @return Post
 	 */
-	Optional<Post> buscarPorId(long id);
+	Optional<Post> buscarPorId(Long id);
 }

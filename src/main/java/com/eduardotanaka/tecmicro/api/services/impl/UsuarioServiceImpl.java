@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Optional<Usuario> buscarPorId(Long id) {
-		return Optional.ofNullable(this.usuarioRepository.findById(id).get());
+		return this.usuarioRepository.findById(id);
 	}
 	
 	@Override

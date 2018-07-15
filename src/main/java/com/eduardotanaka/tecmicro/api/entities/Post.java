@@ -1,5 +1,6 @@
 package com.eduardotanaka.tecmicro.api.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -20,8 +21,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TB_POST")
-public class Post {
+public class Post implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_POST", nullable = false)
