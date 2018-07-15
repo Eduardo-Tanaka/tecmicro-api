@@ -1,7 +1,5 @@
 package com.eduardotanaka.tecmicro.api.services;
 
-import java.util.Optional;
-
 import com.eduardotanaka.tecmicro.api.entities.Usuario;
 
 public interface UsuarioService {
@@ -18,12 +16,12 @@ public interface UsuarioService {
 	 * @param Long: id
 	 * @return Usuario
 	 */
-	Optional<Usuario> buscarPorId(Long id);
+	Usuario buscarPorId(Long id);
 	
 	/**
-	 * Busca e retorna um post pelo id
+	 * Busca e retorna um usuário pela matrícula
 	 * @param int: matricula
-	 * @return Usuario
+	 * @return boolean
 	 */
-	Optional<Usuario> buscarPorMatricula(int matricula);
+	boolean buscarPorMatricula(int matricula);
 }

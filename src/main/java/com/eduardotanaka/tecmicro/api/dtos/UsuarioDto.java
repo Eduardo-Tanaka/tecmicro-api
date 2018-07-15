@@ -1,19 +1,21 @@
 package com.eduardotanaka.tecmicro.api.dtos;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Size;
 
 public class UsuarioDto {
 
 	private Long id;
 	
 	@NotNull(message = "O campo matrícula não pode ser vazio")
+	@Min(value = 1, message = "O campo matrícula não pode ser vazio")
 	private int matricula;
 	
+	
 	@NotEmpty(message = "O campo nome não pode ser vazio")
-	@Length(max = 255, message = "O nome deve ter no máximo 255 caracteres")
+	@Size(max = 255, message = "O nome deve ter no máximo 255 caracteres")
 	private String nome;
 	
 	//private byte[] foto;

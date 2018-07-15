@@ -9,8 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,6 @@ private static final Logger log = LoggerFactory.getLogger(UsuarioController.clas
 		log.info("Cadastrando usuário: {}", usuarioDto.toString());
 		Response<UsuarioDto> response = new Response<UsuarioDto>();
 		
-		validarDados(usuarioDto, result);
 		Usuario usuario = this.converterDto(usuarioDto);
 		
 		if (result.hasErrors()) {
@@ -53,9 +53,13 @@ private static final Logger log = LoggerFactory.getLogger(UsuarioController.clas
 		return ResponseEntity.ok(response);
 	}
 	
-	private void validarDados(UsuarioDto usuario, BindingResult result) {
-		this.usuarioService.buscarPorMatricula(usuario.getMatricula())
-			.ifPresent(user -> result.addError(new ObjectError("usuario", "A matrícula: " + usuario.getMatricula() + " já está cadastrada")));
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario> post(@PathVariable Long id) {
+		log.info("Buscando post: {}", id);
+		
+		Usuario usuario = this.usuarioService.buscarPorId(id);
+
+		return ResponseEntity.ok(usuario);
 	}
 	
 	/**

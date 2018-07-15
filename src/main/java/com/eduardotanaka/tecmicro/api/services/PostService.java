@@ -1,6 +1,6 @@
 package com.eduardotanaka.tecmicro.api.services;
 
-import java.util.Optional;
+import java.util.List;
 
 import com.eduardotanaka.tecmicro.api.entities.Post;
 
@@ -15,8 +15,21 @@ public interface PostService {
 	
 	/**
 	 * Busca e retorna um post pelo id
-	 * @param long: id
+	 * @param Long: id
 	 * @return Post
 	 */
-	Optional<Post> buscarPorId(Long id);
+	Post buscarPorId(Long id);
+	
+	/**
+	 * Busca e retorna uma lista de posts pelo id do usuario
+	 * @param Long: id
+	 * @return List<Post>
+	 */
+	List<Post> buscarPorIdUsuario(Long id);
+	
+	/**
+	 * Busca e retorna todos os posts
+	 * @return List<Post>
+	 */
+	List<Post> buscarTodos();
 }

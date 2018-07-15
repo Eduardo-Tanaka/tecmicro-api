@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TB_RESPOSTA")
 public class Resposta implements Serializable {
@@ -40,10 +42,12 @@ public class Resposta implements Serializable {
 	@Column(name = "NR_VOTOS")
 	private int votos;
 	
+
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_POST")
 	private Post post;
@@ -104,6 +108,28 @@ public class Resposta implements Serializable {
 
 	public void setPost(Post post) {
 		this.post = post;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Resposta other = (Resposta) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 	
 }

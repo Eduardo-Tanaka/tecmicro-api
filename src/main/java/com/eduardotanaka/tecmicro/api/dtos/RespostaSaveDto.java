@@ -2,15 +2,14 @@ package com.eduardotanaka.tecmicro.api.dtos;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Size;
 
 public class RespostaSaveDto {
 
 	private Long id;
 	
 	@NotEmpty(message = "O campo descrição não pode ser vazio")
-	@Length(max = 1000, message = "A descrição deve ter no máximo 1000 caracteres")
+	@Size(max = 1000, message = "A descrição deve ter no máximo 1000 caracteres")
 	private String content;
 	
 	@NotNull(message = "O campo id do usuário não pode ser nulo")
