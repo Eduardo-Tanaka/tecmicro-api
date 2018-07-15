@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 public class Resposta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_RESPOSTA")
 	private long id;
 	

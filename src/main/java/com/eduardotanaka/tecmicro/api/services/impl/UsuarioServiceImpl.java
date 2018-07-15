@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.eduardotanaka.tecmicro.api.repositories.UsuarioRepository;
-import com.eduardotanaka.tecmicro.api.services.impl.UsuarioServiceImpl;
 import com.eduardotanaka.tecmicro.api.entities.Usuario;
+import com.eduardotanaka.tecmicro.api.repositories.UsuarioRepository;
 import com.eduardotanaka.tecmicro.api.services.UsuarioService;
 
 @Service
@@ -27,9 +26,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Optional<Usuario> buscarPorId(int id) {
-		log.info("Buscando pelo id: {}", id);
+	public Optional<Usuario> buscarPorId(Long id) {
 		return Optional.ofNullable(this.usuarioRepository.findById(id).get());
+	}
+	
+	@Override
+	public Optional<Usuario> buscarPorMatricula(int matricula) {
+		return Optional.ofNullable(this.usuarioRepository.findByMatricula(matricula));
 	}
 
 }
